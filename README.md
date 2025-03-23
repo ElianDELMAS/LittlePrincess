@@ -1,4 +1,4 @@
-# Projet "Creation de Monde Virtuel"
+# "The Little Princess" project
 
 ## Download link to our project sources:
 
