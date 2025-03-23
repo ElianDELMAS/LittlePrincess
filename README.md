@@ -1,4 +1,4 @@
-# projetCreationMondeVirtuel
+# Projet "Creation de Monde Virtuel"
 
 ## Download link to our project sources:
 
