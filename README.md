@@ -24,6 +24,7 @@ We use the version 6000.0.36f1 of Unity.
   - The Little Princess = https://sketchfab.com/3d-models/minecraft-alex-ae962e4a336a44929b88d7036ee71a8a
   - Skeletons = https://sketchfab.com/3d-models/chibi-skeleton-4cd9e21315fa43b3a96c397b8c17a049
   - Pigs = https://sketchfab.com/3d-models/minecraft-pig-with-saddle-1a998dca9aac474b8793b974afd637a7
+  - The spaceship = https://sketchfab.com/3d-models/minecraft-spaceship-mediator-3281e606b337498eb2197f311ef45768
 
 ## External assets and resources that we used with modification:
 (the link to the source, and briefly describe the level of changes you made)
