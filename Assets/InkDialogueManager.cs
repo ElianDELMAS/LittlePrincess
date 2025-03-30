@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Ink.Runtime;
+using System.Collections;
 
 public class InkDialogueManager : MonoBehaviour
 {
@@ -62,9 +63,12 @@ public class InkDialogueManager : MonoBehaviour
     private void ChangeSelection(int direction)
     {
         int totalChoices = currentStory.currentChoices.Count;
-        selectedChoiceIndex = (selectedChoiceIndex + direction + totalChoices) % totalChoices;
 
-        UpdateButtonSelection();
+        if (totalChoices != 0)
+        {
+            selectedChoiceIndex = (selectedChoiceIndex + direction + totalChoices) % totalChoices;
+            UpdateButtonSelection();
+        }
     }
 
     private void UpdateButtonSelection()
@@ -83,18 +87,31 @@ public class InkDialogueManager : MonoBehaviour
     }
 
     private void ContinueStory()
-    {
+    {      
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            string text = currentStory.Continue();
+
+            if (currentStory.currentChoices.Count == 0) 
+            {
+                StartCoroutine(WaitAndEndDialogue());
+            }
+
+            dialogueText.text = text;
+            
+            DisplayChoices();
         }
         else
         {
-            EndDialogue();
-            return;
+            if (currentStory.currentChoices.Count == 0)
+            {
+                StartCoroutine(WaitAndEndDialogue());
+            }
+            else
+            {
+                DisplayChoices();
+            }
         }
-
-        DisplayChoices();
     }
 
     private void DisplayChoices()
@@ -127,9 +144,15 @@ public class InkDialogueManager : MonoBehaviour
         ContinueStory();
     }
 
+    private IEnumerator WaitAndEndDialogue()
+    {
+        yield return new WaitForSeconds(2f);
+        EndDialogue();
+    }
+
     private void EndDialogue()
     {
-        dialoguePanel.SetActive(false);
         firstPersonController.activateFreezePlayer(false);
+        dialoguePanel.SetActive(false);
     }
 }
