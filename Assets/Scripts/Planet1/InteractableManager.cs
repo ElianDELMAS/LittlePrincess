@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class InteractableManager : MonoBehaviour
 {
@@ -14,14 +13,23 @@ public class InteractableManager : MonoBehaviour
     private bool isDialoguePlaying;
     private bool isVideoPlaying;
 
+    private GameObject player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     void Update()
     {
-        FindIfAnAnimationIsPlaying();
-        FindIfADialogueIsPlaying();
-        FindIfAVideoIsPlaying();
-        FindClosestInteractable();
+        if (interactables == null || interactables.Length == 0 || player == null)
+            return;
 
-        if (currentClosest != null && !isAnimationPlaying && !isDialoguePlaying && !isVideoPlaying)
+        CheckStatesAndClosest();
+
+        bool canInteract = currentClosest != null && !isAnimationPlaying && !isDialoguePlaying && !isVideoPlaying;
+
+        if (canInteract)
         {
             ShowInteractionUI(currentClosest.interactionMessage);
 
@@ -37,78 +45,66 @@ public class InteractableManager : MonoBehaviour
         }
     }
 
-    void FindClosestInteractable()
+    void CheckStatesAndClosest()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
         float closestDistance = Mathf.Infinity;
         currentClosest = null;
 
+        isAnimationPlaying = false;
+        isDialoguePlaying = false;
+        isVideoPlaying = false;
+
         foreach (var interactable in interactables)
         {
+            if (interactable == null) continue;
+
             float dist = Vector3.Distance(player.transform.position, interactable.transform.position);
             if (dist <= interactable.interactionRadius && dist < closestDistance)
             {
                 closestDistance = dist;
                 currentClosest = interactable;
             }
-        }
-    }
 
-    void FindIfAnAnimationIsPlaying()
-    {
-        int count = 0;
-        foreach (var interactable in interactables)
-        {
-            if (!interactable.getIsAnimationIsPlaying()) count++;
-        }
-        if (count == interactables.Length) isAnimationPlaying = false;
-        else isAnimationPlaying = true;
-    }
+            // Stop checking further if one is playing
+            if (interactable.getIsAnimationIsPlaying())
+                isAnimationPlaying = true;
 
-    void FindIfADialogueIsPlaying()
-    {
-        int count = 0;
-        foreach (var interactable in interactables)
-        {
-            if (!interactable.getIsDialogueIsPlaying()) count++;
-        }
-        if (count == interactables.Length) isDialoguePlaying = false;
-        else isDialoguePlaying = true;
-    } 
+            if (interactable.getIsDialogueIsPlaying())
+                isDialoguePlaying = true;
 
-    void FindIfAVideoIsPlaying()
-    {
-        int count = 0;
-        foreach (var interactable in interactables)
-        {
-            if (!interactable.getIsVideoIsPlaying()) count++;
+            if (interactable.getIsVideoIsPlaying())
+                isVideoPlaying = true;
+
+            // Petit boost : si tout est true, pas besoin de continuer
+            if (isAnimationPlaying && isDialoguePlaying && isVideoPlaying)
+                break;
         }
-        Debug.Log(count);
-        if (count == interactables.Length) isVideoPlaying = false;
-        else isVideoPlaying = true;
     }
 
     void ShowInteractionUI(string message)
     {
-        if (interactionText != null)
+        if (interactionText != null && !interactionText.gameObject.activeSelf)
         {
             interactionText.gameObject.SetActive(true);
-            interactionText.text = message;
         }
 
-        if (interactionImage != null)
+        if (interactionImage != null && !interactionImage.gameObject.activeSelf)
         {
             interactionImage.gameObject.SetActive(true);
+        }
+
+        if (interactionText != null)
+        {
+            interactionText.text = message;
         }
     }
 
     void HideInteractionUI()
     {
-        if (interactionText != null)
+        if (interactionText != null && interactionText.gameObject.activeSelf)
             interactionText.gameObject.SetActive(false);
 
-        if (interactionImage != null)
+        if (interactionImage != null && interactionImage.gameObject.activeSelf)
             interactionImage.gameObject.SetActive(false);
     }
 }

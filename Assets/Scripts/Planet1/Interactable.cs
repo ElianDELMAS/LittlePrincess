@@ -69,7 +69,10 @@ public class Interactable : MonoBehaviour
         }
 
         checkDialogueIsPlaying();
-        checkVideoIsPlaying();
+        if (hasVideo) 
+        {
+            checkVideoIsPlaying();
+        }
     }
 
     public bool CanInteract(Transform player)
@@ -99,7 +102,7 @@ public class Interactable : MonoBehaviour
         {
             if (!isCharacterAlreadyVisited || !objectName.Contains("baseball"))
             {
-                if (hasAnimation && mAnimator != null )
+                if (hasAnimation && mAnimator != null && !isCharacterAlreadyVisited)
                 {
                         mAnimator.SetTrigger(animationTriggerName);
                         isAnimationPlaying = true;
@@ -124,7 +127,7 @@ public class Interactable : MonoBehaviour
         {
             isWaitingForDialogueEnd = false;
             
-            if (hasAnimation && mAnimator != null)
+            if (hasAnimation && mAnimator != null && !isCharacterAlreadyVisited)
             {
                 mAnimator.SetTrigger(animationTriggerName);
                 isAnimationPlaying = true;
@@ -177,7 +180,6 @@ public class Interactable : MonoBehaviour
 
     private void checkVideoIsPlaying() {
         isVideoPlaying = videoDisplay.gameObject.activeSelf;
-        Debug.Log(isVideoPlaying);
     }
 
     private void activeBall(string tag, bool active) 
@@ -209,6 +211,7 @@ public class Interactable : MonoBehaviour
 
     void OnVideoEnd(VideoPlayer vp)
     {
+        videoPlayer.clip = null;
         firstPersonController.activateFreezePlayer(false);
         videoDisplay.gameObject.SetActive(false);
     }
