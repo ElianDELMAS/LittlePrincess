@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.UI;
 using Ink.Runtime;
 using System.Collections;
+using System.Text.RegularExpressions;
+using UnityEngine.Events;
 
 public class InkDialogueManager : MonoBehaviour
 {
@@ -12,9 +14,14 @@ public class InkDialogueManager : MonoBehaviour
 
     private Story currentStory;
     public TextAsset inkJsonAsset;
-
+    public TextAsset inkJsonAsset2;
+    
     private int selectedChoiceIndex = 0;
     private FirstPersonController firstPersonController;
+
+    public UnityEvent OnDialogueEnded;
+    
+    private bool hasBall = false;
 
     private void Start()
     {
@@ -32,6 +39,26 @@ public class InkDialogueManager : MonoBehaviour
 
         firstPersonController.activateFreezePlayer(true);
         currentStory = new Story(inkJsonAsset.text);
+        
+        currentStory.BindExternalFunction("get_ball", () => {
+            hasBall = true;
+        });
+        
+        dialoguePanel.SetActive(true);
+        ContinueStory();
+    }
+
+    public void StartDialogue2()
+    {
+        if (inkJsonAsset2 == null)
+        {
+            Debug.LogError("Aucun fichier Ink trouvé!");
+            return;
+        }
+
+        firstPersonController.activateFreezePlayer(true);
+        currentStory = new Story(inkJsonAsset2.text);
+        
         dialoguePanel.SetActive(true);
         ContinueStory();
     }
@@ -58,13 +85,17 @@ public class InkDialogueManager : MonoBehaviour
         {
             SelectChoice();
         }
+        else if (Input.GetKeyDown(KeyCode.Space) && currentStory.currentChoices.Count == 0 && currentStory.canContinue)
+        {
+            ContinueStory();
+        }
     }
 
     private void ChangeSelection(int direction)
     {
         int totalChoices = currentStory.currentChoices.Count;
 
-        if (totalChoices != 0)
+        if (totalChoices > 0)
         {
             selectedChoiceIndex = (selectedChoiceIndex + direction + totalChoices) % totalChoices;
             UpdateButtonSelection();
@@ -83,7 +114,10 @@ public class InkDialogueManager : MonoBehaviour
 
     private void SelectChoice()
     {
-        answerButtons[selectedChoiceIndex].onClick.Invoke();
+        if (currentStory.currentChoices.Count > 0 && selectedChoiceIndex < answerButtons.Length)
+        {
+            answerButtons[selectedChoiceIndex].onClick.Invoke();
+        }
     }
 
     private void ContinueStory()
@@ -91,21 +125,41 @@ public class InkDialogueManager : MonoBehaviour
         if (currentStory.canContinue)
         {
             string text = currentStory.Continue();
-
-            if (currentStory.currentChoices.Count == 0) 
-            {
-                StartCoroutine(WaitAndEndDialogue());
-            }
-
-            dialogueText.text = text;
             
-            DisplayChoices();
+            string displayText = text;
+            
+            int colonIndex = text.IndexOf(':');
+            if (colonIndex > 0)
+            {
+                string speakerName = "";
+                Match match = Regex.Match(text, @"(\w+)\s*:");
+                if (match.Success)
+                {
+                    speakerName = match.Groups[1].Value;
+                }
+                displayText = "<b>" + speakerName + ":</b> " + text.Substring(colonIndex + 1).Trim();
+            }
+            else 
+            {
+                displayText = "";
+            }
+            
+            dialogueText.text = displayText;
+            
+            if (currentStory.currentChoices.Count > 0)
+            {
+                DisplayChoices();
+            } 
+            else
+            {
+                EndDialogue();
+            }
         }
         else
         {
             if (currentStory.currentChoices.Count == 0)
             {
-                StartCoroutine(WaitAndEndDialogue());
+                EndDialogue();
             }
             else
             {
@@ -154,5 +208,11 @@ public class InkDialogueManager : MonoBehaviour
     {
         firstPersonController.activateFreezePlayer(false);
         dialoguePanel.SetActive(false);
+        OnDialogueEnded?.Invoke();
+    }
+    
+    public bool HasBall()
+    {
+        return hasBall;
     }
 }

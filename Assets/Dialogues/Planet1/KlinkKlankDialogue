@@ -1,0 +1,49 @@
+Klink: Couic... Klank, arrête de trembler, tu fais vibrer mon axe, regarde un visiteur...
+
++ [Parler à Klink] -> klink_1
++ [Examiner Klank] -> klank_1
+
+=== klink_1 ===
+Klink: Couic... Enfin quelqu'un de sensé, lui c'est juste mon boulet rouillé depuis 47 ans.
+
++ [Pourquoi restez-vous ensemble ?] -> klink_2
++ [Klank semble bien au point pourtant] -> klank_1
+
+=== klink_2 ===
+Klink: Couic... Technique de sabotage, il m'a rouillé volontairement pour qu'on soit collés.
+
++ [Ahah pas mal la stratégie] -> klank_1
++ [C'est un farceur à ce que je vois] -> klank_1
++ [Compréhensible tu es jeune encore] -> klank_1
+
+
+=== klank_1 ===
+Klank: CRRR... Mensonges, c'est CET idiot qui a provoqué la fuite d'acide !
+
++ [Vraiment ?] -> klank_2
++ [Klink a l'air sympa] -> klink_3
+
+=== klank_2 ===
+Klank: Crrr... J'étais rouage de précision, maintenant je partage ma rouille avec ce tas de boulons...
+
++ [C'est pas ce que m'a dit Klink pourtant] -> klink_3
++ [Il y'a un menteur parmis vous 2] -> klink_3
++ [Tu n'a pas l'air parfait quand même...] -> klink_3
+
+=== klink_3 ===
+Klink: Couic... Précision ? Lui ? La seule chose précise chez lui c'est l'heure de la sieste !
+
++ [Vous vous aimez bien en vrai] -> klink_4
++ [Je dois y aller] -> fin_adieu
+
+=== klink_4 ===
+Klink: Couic... C'est... c'est une alliance stratégique ...et peut-être un peu d'affection.
+
++ [Ca se voit que vous vous aimez bien au fond, j'y go] -> fin_adieu
++ [C'est ca que je voulez entendre, je peux y aller maintenant] -> fin_adieu
+
+=== fin_adieu ===
+Klink et Klank: Couic... Crrr... Tu nous quittes deja ? Bonne continuation petite princesse !
+
++ [Au revoir les inséparables !] -> END
++ [Prenez soin de vous] -> END

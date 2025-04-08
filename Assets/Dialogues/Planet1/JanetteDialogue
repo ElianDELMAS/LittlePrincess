@@ -1,0 +1,64 @@
+Janette: AHHHH !!!
+
+ + AHHHH ?! Qu'est-ce qu’il se passe ?! -> queen_peur
+ + T'es complètement folle toi ! Me parle même pas. -> END
+ + Wow du calme ! Qu'est ce qu'il y a t'as vu un fantôme ?? -> queen_peur
+
+ === queen_peur ===
+ Janette: Excuse-moi, tu m'as fait peur… J’ai cru que tu venais me chercher… Qui es-tu ?
+
+//////////////////////////////////////////////////////////////////////////
+ + Je suis juste une petite princesse inoffensive. Et toi, qui es-tu ? -> queen_histoire
+ + Mais si, je viens te chercher ! AHAHAH ! Tremble ! -> END
+ + Chercher ? Pourquoi je viendrais te chercher, t’es qui au juste ..? -> queen_histoire
+ 
+ === queen_histoire ===
+ Janette: Je m’appelle Janette. J’étais… une reine sur un plateau d’échecs…
+ 
+ + Comment ça, "tu étais une reine" ? -> queen_passe
+ + Ok ok, bon… Ravie de t’avoir connue, salut ! -> END
+ 
+ === queen_passe ===
+ Janette: Je ne veux plus être associée à ça…
+
+ + Pourquoi ? Qu’est-ce qui s’est passé ? -> queen_pourquoi
+ + Ohlala… Tu fais trop de mystère cést pas pour moi, ciao. -> END
+
+ === queen_pourquoi ===
+ Janette: C’est trop dur… Être la pièce la plus puissante du jeu, tu comprends… Je n’en peux plus…
+
+ + J’avoue que je comprends pas trop… Comment ca ? -> queen_explique
+ + C’est pas censé être cool d’être la plus forte ? -> queen_explique
+ + Franchement je comprends pas… Et je m’en fiche ! -> END
+
+ === queen_explique ===
+ Janette: Si tu savais tout ce que j’ai vu… Tous ces morts… Je ne voulais ni tuer, ni mourir…
+
+ + Euh… Attends… Tu as tué ?  -> queen_tue
+ + Oula, je parle pas avec des tueurs moi. Salut, et… me tue pas hein ! -> END
+
+ === queen_tue ===
+ Janette: Non… Mais là, j’aurais été obligée… C’était le roi ou moi…
+
+ + Comment ca ? -> queen_pieces
+ + Trop long ton histoire, j’en ai marre. Bye. -> END
+ 
+ === queen_pieces ===
+ Janette: Ils étaient tous morts… Il ne restait plus que les deux rois… et moi. Alors j’ai fui…
+
+ + Mais comment as-tu réussi à t’échapper ? -> queen_fuite
+ + C’est pas très courageux de fuir, tu sais. -> queen_fuite
+ + Waouh, t’es trop forte. Moi aussi faut que je me sauve. Ciao ! -> END
+ 
+ === queen_fuite ===
+ Janette: Il restait aussi un cavalier encore en vie. Quand c’était mon tour, je suis partie avec lui… 
+ 
+ + Wow, bien joué… Et… où est passé ce cavalier ? -> queen_cavalier
+ + Un cavalier ? Genre un vrai cheval ? Trop classe. -> queen_cavalier
+ + Trop mims, j’espère que vous vous êtes mariés maintenant ! -> queen_cavalier
+ 
+ === queen_cavalier ===
+ Janette: Il est mort peu après notre fuite… Depuis, j’erre seule. Mais… merci. Merci de m’avoir écoutée. Parler à quelqu’un, ça m’a fait du bien.
+
+ + Je suis désolée pour toi… Merci de m'avoir raconté cette histoire. -> END
+ + Bon bah… Force à toi hein. -> END

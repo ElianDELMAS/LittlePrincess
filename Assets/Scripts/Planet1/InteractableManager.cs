@@ -12,14 +12,16 @@ public class InteractableManager : MonoBehaviour
     private Interactable currentClosest;
     private bool isAnimationPlaying;
     private bool isDialoguePlaying;
+    private bool isVideoPlaying;
 
     void Update()
     {
         FindIfAnAnimationIsPlaying();
         FindIfADialogueIsPlaying();
+        FindIfAVideoIsPlaying();
         FindClosestInteractable();
 
-        if (currentClosest != null && !isAnimationPlaying && !isDialoguePlaying)
+        if (currentClosest != null && !isAnimationPlaying && !isDialoguePlaying && !isVideoPlaying)
         {
             ShowInteractionUI(currentClosest.interactionMessage);
 
@@ -74,6 +76,18 @@ public class InteractableManager : MonoBehaviour
         if (count == interactables.Length) isDialoguePlaying = false;
         else isDialoguePlaying = true;
     } 
+
+    void FindIfAVideoIsPlaying()
+    {
+        int count = 0;
+        foreach (var interactable in interactables)
+        {
+            if (!interactable.getIsVideoIsPlaying()) count++;
+        }
+        Debug.Log(count);
+        if (count == interactables.Length) isVideoPlaying = false;
+        else isVideoPlaying = true;
+    }
 
     void ShowInteractionUI(string message)
     {

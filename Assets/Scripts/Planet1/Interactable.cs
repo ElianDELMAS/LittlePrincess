@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour
 {
@@ -12,10 +14,47 @@ public class Interactable : MonoBehaviour
     public bool hasAnimation = false;
     public string animationTriggerName;
 
+    public bool hasVideo = false;
+    public VideoPlayer videoPlayer;
+    public VideoClip videoClip;
+    public RawImage videoDisplay;
+
     private bool isAnimationPlayed = false;
     private bool isAnimationPlaying = false;
     private bool isDialoguePlaying = false;
+    private bool isVideoPlaying = false;
     private bool isCharacterAlreadyVisited = false;
+    private bool isWaitingForDialogueEnd = false;
+
+    private GameObject[] ballsBesideBaseballBat;
+    private string objectName;
+
+    private FirstPersonController firstPersonController;
+
+    void Start()
+    {
+        objectName = gameObject.name.ToLower();
+        if (objectName.Contains("baseball"))
+        {
+            ballsBesideBaseballBat = GameObject.FindGameObjectsWithTag("Ball2");
+            activeBall("Ball2", false);
+        }
+
+        firstPersonController = FindObjectOfType<FirstPersonController>();
+
+        if (dialogueManager != null)
+        {
+            dialogueManager.OnDialogueEnded.AddListener(OnDialogueEnded);
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (dialogueManager != null)
+        {
+            dialogueManager.OnDialogueEnded.RemoveListener(OnDialogueEnded);
+        }
+    }
 
     void Update()
     {
@@ -30,6 +69,7 @@ public class Interactable : MonoBehaviour
         }
 
         checkDialogueIsPlaying();
+        checkVideoIsPlaying();
     }
 
     public bool CanInteract(Transform player)
@@ -47,14 +87,53 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        if (hasAnimation && mAnimator != null)
+        bool isGlove = objectName.Contains("glove");
+
+        if (isGlove)
         {
-            mAnimator.SetTrigger(animationTriggerName);
-            isAnimationPlaying = true;
+            StartDialogue();
+            isWaitingForDialogueEnd = true;
+            activeBall("Ball", false);
         }
         else
         {
-            StartDialogue();
+            if (!isCharacterAlreadyVisited || !objectName.Contains("baseball"))
+            {
+                if (hasAnimation && mAnimator != null )
+                {
+                        mAnimator.SetTrigger(animationTriggerName);
+                        isAnimationPlaying = true;
+                }
+                else
+                {
+                    StartDialogue();
+                }
+            }
+            else
+            {
+                activeBall("Ball2", true);
+                StartDialogue2();
+            }
+
+        }
+    }
+
+    private void OnDialogueEnded()
+    {
+        if (isWaitingForDialogueEnd)
+        {
+            isWaitingForDialogueEnd = false;
+            
+            if (hasAnimation && mAnimator != null)
+            {
+                mAnimator.SetTrigger(animationTriggerName);
+                isAnimationPlaying = true;
+            }
+        }
+
+        if (hasVideo)
+        {
+            StartVideo();
         }
     }
 
@@ -62,7 +141,10 @@ public class Interactable : MonoBehaviour
     {
         isAnimationPlaying = false;
         isAnimationPlayed = true;
-        StartDialogue();
+        if (!objectName.Contains("glove"))
+        {
+            StartDialogue();
+        }
     }
 
     private void StartDialogue()
@@ -78,11 +160,57 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    private void StartDialogue2()
+    {
+        if (dialogueManager != null)
+        {
+            dialogueManager.StartDialogue2();
+        }
+    }
+
     private void checkDialogueIsPlaying() {
         if (dialogueManager != null && dialogueManager.dialoguePanel != null)
         {
             isDialoguePlaying = dialogueManager.dialoguePanel.activeSelf;
         }
+    }
+
+    private void checkVideoIsPlaying() {
+        isVideoPlaying = videoDisplay.gameObject.activeSelf;
+        Debug.Log(isVideoPlaying);
+    }
+
+    private void activeBall(string tag, bool active) 
+    {
+        GameObject[] ballsList;
+        if (tag == "Ball2")
+        {
+            ballsList = ballsBesideBaseballBat;
+        }
+        else 
+        {
+            ballsList = GameObject.FindGameObjectsWithTag(tag);
+        }
+
+        foreach (GameObject ball in ballsList)
+        {
+            ball.SetActive(active);
+        }
+    }
+
+    void StartVideo()
+    {
+        videoDisplay.gameObject.SetActive(true);
+        firstPersonController.activateFreezePlayer(true);
+        videoPlayer.clip = videoClip;
+        videoPlayer.Play();
+        videoPlayer.loopPointReached += OnVideoEnd;
+    }
+
+    void OnVideoEnd(VideoPlayer vp)
+    {
+        firstPersonController.activateFreezePlayer(false);
+        videoDisplay.gameObject.SetActive(false);
     }
 
     public bool getIsAnimationIsPlaying()
@@ -93,5 +221,10 @@ public class Interactable : MonoBehaviour
     public bool getIsDialogueIsPlaying()
     {
         return isDialoguePlaying;
+    }
+
+    public bool getIsVideoIsPlaying()
+    {
+        return isVideoPlaying;
     }
 }
