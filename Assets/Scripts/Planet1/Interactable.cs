@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Interactable : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class Interactable : MonoBehaviour
     public Animator mAnimator;
     public bool hasAnimation = false;
     public string animationTriggerName;
+
+    public Animator princessAnimator;
+
+    private bool justFinishedDialogue2 = false;
 
     public bool hasVideo = false;
     public VideoPlayer videoPlayer;
@@ -30,6 +35,8 @@ public class Interactable : MonoBehaviour
     private string objectName;
 
     private FirstPersonController firstPersonController;
+
+    public LevelCompletion levelCompletion;
 
     void Start()
     {
@@ -126,11 +133,25 @@ public class Interactable : MonoBehaviour
         if (isWaitingForDialogueEnd)
         {
             isWaitingForDialogueEnd = false;
-            
+
             if (hasAnimation && mAnimator != null && !isCharacterAlreadyVisited)
             {
                 mAnimator.SetTrigger(animationTriggerName);
                 isAnimationPlaying = true;
+            }
+        }
+        Debug.Log("Dialogue ended");
+        if (justFinishedDialogue2 && objectName.Contains("baseball"))
+        {
+            Debug.Log("Dialogue 2 ended");
+            justFinishedDialogue2 = false;
+
+            if (princessAnimator != null)
+            {
+                Debug.Log("Princess animation started");
+                VideoPlayer videoPlayer = princessAnimator.GetComponent<VideoPlayer>();
+                videoPlayer.Play();
+                videoPlayer.loopPointReached += OnVideoEnd;
             }
         }
 
@@ -167,6 +188,7 @@ public class Interactable : MonoBehaviour
     {
         if (dialogueManager != null)
         {
+            justFinishedDialogue2 = true;
             dialogueManager.StartDialogue2();
         }
     }
@@ -213,7 +235,13 @@ public class Interactable : MonoBehaviour
     {
         videoPlayer.clip = null;
         firstPersonController.activateFreezePlayer(false);
-        videoDisplay.gameObject.SetActive(false);
+        //videoDisplay.gameObject.SetActive(false);
+
+        if (levelCompletion != null && objectName.Contains("baseball"))
+        {
+            levelCompletion.CompleteLevel();
+            SceneManager.LoadScene("GameLevelMenu");
+        }
     }
 
     public bool getIsAnimationIsPlaying()

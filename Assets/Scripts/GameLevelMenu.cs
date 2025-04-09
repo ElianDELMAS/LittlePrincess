@@ -7,13 +7,4 @@ public class GameLevelMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainGameMenu");
     }
-
-    public void CompleteLevel(int levelNumber)
-    {
-        int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
-        if (levelNumber >= levelReached)
-        {
-            PlayerPrefs.SetInt("LevelReached", levelNumber + 1);
-        }
-    }
 }
