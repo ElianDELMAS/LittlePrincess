@@ -91,7 +91,7 @@ public class HoleTrigger : MonoBehaviour
             }
 
             // Appliquer une force vers le bas pour que le joueur tombe immédiatement
-            playerRb.velocity = Vector3.zero;  // Réinitialiser la vitesse du personnage
+            playerRb.linearVelocity = Vector3.zero;  // Réinitialiser la vitesse du personnage
             playerRb.AddForce(Vector3.down * 10f, ForceMode.Impulse);  // Appliquer une impulsion vers le bas
 
             // Attendre un petit moment pour laisser le temps au personnage de commencer sa chute
