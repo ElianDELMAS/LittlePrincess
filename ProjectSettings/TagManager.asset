@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ball
   - Ball2
+  - Ground
+  - Hole
   layers:
   - Default
   - TransparentFX
