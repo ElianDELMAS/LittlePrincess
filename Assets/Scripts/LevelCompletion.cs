@@ -11,8 +11,6 @@ public class LevelCompletion : MonoBehaviour
         {
             Debug.Log("Ce niveau n'est pas encore débloqué.");
         }
-        
-        this.CompleteLevel();
     }
 
     public void CompleteLevel()
@@ -21,7 +19,7 @@ public class LevelCompletion : MonoBehaviour
         if (currentLevel > levelReached)
         {
             PlayerPrefs.SetInt("LevelReached", currentLevel);
-            Debug.Log($"Niveau {currentLevel} complété, le niveau {currentLevel + 1} est maintenant débloqué !");
+            Debug.Log($"Niveau {currentLevel - 1} complété, le niveau {currentLevel} est maintenant débloqué !");
         }
     }
 }
