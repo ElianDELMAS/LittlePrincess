@@ -19,12 +19,12 @@ public class LapManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Planet2")
         {
             // Get players in the scene
-            foreach (CarIdentity carIdentity in GameObject.FindObjectsOfType<CarIdentity>())
+            foreach (CarIdentity carIdentity in GameObject.FindObjectsByType<CarIdentity>(FindObjectsSortMode.None))
             {
                 playerRanks.Add(new PlayerRank(carIdentity));
             }
             ListenCheckpoints(true);
-            ui.UpdateLapText("Lap " + playerRanks[0].lapNumber + " / " + totalLaps);
+            ui.UpdateLapText("Tour " + playerRanks[0].lapNumber + " / " + totalLaps);
             mainPlayerRank = playerRanks.Find(player => player.identity.gameObject.tag == "Player");
         }
     }
@@ -66,20 +66,20 @@ public class LapManager : MonoBehaviour
                     // if first winner, display its name
                     if (player.rank == 1)
                     {
-                        Debug.Log(player.identity.driverName + " won");
-                        ui.UpdateLapText(player.identity.driverName + " won");
+                        Debug.Log(player.identity.driverName + " a gagné !");
+                        ui.UpdateLapText(player.identity.driverName + " a gagné !");
                     }
                     else if (player == mainPlayerRank) // display player rank if not winner
                     {
-                        ui.UpdateLapText("\nYou finished in " + mainPlayerRank.rank + " place");
+                        ui.UpdateLapText("Vous terminez en " + mainPlayerRank.rank + "ème position.");
                     }
 
                     if (player == mainPlayerRank) { onPlayerFinished.Invoke(); }
                 }
                 else
                 {
-                    Debug.Log(player.identity.driverName + ": lap " + player.lapNumber);
-                    if (car.gameObject.tag == "Player") { ui.UpdateLapText("Lap " + player.lapNumber + " / " + totalLaps); }
+                    Debug.Log(player.identity.driverName + ": tour " + player.lapNumber);
+                    if (car.gameObject.tag == "Player") { ui.UpdateLapText("Tour " + player.lapNumber + " / " + totalLaps); }
                 }
             }
             else if (checkpointNumber == player.lastCheckpoint + 1) // next checkpoint reached
