@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 using UnityEngine.SceneManagement;  // Nécessaire pour gérer les scènes
 using System.Collections;
 
@@ -14,6 +15,9 @@ public class HoleTrigger : MonoBehaviour
     private Rigidbody playerRb;
     private Collider playerCollider;
     private bool gameOverTriggered = false;
+    public Animator princessAnimator;
+    public VideoPlayer videoPlayer;
+    public LevelCompletion levelCompletion;
 
     void Start()
     {
@@ -64,6 +68,17 @@ public class HoleTrigger : MonoBehaviour
         }
     }
 
+    void OnVideoEnd(VideoPlayer vp)
+    {
+        videoPlayer.clip = null;
+
+        if (levelCompletion != null)
+        {
+            levelCompletion.CompleteLevel();
+            SceneManager.LoadScene("GameLevelMenu");
+        }
+    }
+
     IEnumerator GameOver()
     {
         Debug.Log("Fin du jeu !");
@@ -97,14 +112,13 @@ public class HoleTrigger : MonoBehaviour
             // Attendre un petit moment pour laisser le temps au personnage de commencer sa chute
             yield return new WaitForSeconds(0.1f);
 
-            // Arrêter le jeu en fonction de la plateforme (édition ou production)
-#if UNITY_EDITOR
-            // Arrêter le jeu dans l'éditeur Unity
-            EditorApplication.isPlaying = false;
-#else
-            // Arrêter le jeu en build
-            Application.Quit();
-#endif
+            if (princessAnimator != null)
+            {
+                Debug.Log("Princess animation started");
+                VideoPlayer videoPlayer = princessAnimator.GetComponent<VideoPlayer>();
+                videoPlayer.Play();
+                videoPlayer.loopPointReached += OnVideoEnd;
+            }
         }
     }
 }
