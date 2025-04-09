@@ -802,6 +802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c577717d4a8a91488a2cb0d41899dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2087006749}
+  mainCamera: {fileID: 330585543}
 --- !u!114 &2087006756
 MonoBehaviour:
   m_ObjectHideFlags: 0
