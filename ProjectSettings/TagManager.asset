@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - Ball
+  - Ball2
   - Ground
   - Hole
   layers:
