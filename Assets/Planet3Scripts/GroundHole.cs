@@ -7,6 +7,8 @@ public class GroundHole : MonoBehaviour
     private float holeSize = 3f;
     private float offsetY = 0.2f; // Hauteur supplémentaire pour que le cylindre dépasse un peu
 
+    private static int holeCounter = 0;
+
     void Start()
     {
         List<int> availableIndexes = new List<int> { 0, 1, 2, 3, 4 };
@@ -17,7 +19,12 @@ public class GroundHole : MonoBehaviour
             int index = availableIndexes[Random.Range(0, availableIndexes.Count)];
             availableIndexes.Remove(index);
 
-            CreateHole(index);
+            holeCounter++;
+
+            if (holeCounter > 5)
+            {
+                CreateHole(index);
+            }
         }
     }
 
