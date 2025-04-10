@@ -14,9 +14,9 @@ public class CarMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.forwardMoveSpeed = -20.0f;
-        this.backwardMoveSpeed = 20.0f;
-        this.steerSpeed = 50.0f;
+        this.forwardMoveSpeed = -25.0f;
+        this.backwardMoveSpeed = 25.0f;
+        this.steerSpeed = 75.0f;
     }
 
     // Update is called once per frame

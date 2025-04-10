@@ -27,9 +27,9 @@ public class PlayerControls : MonoBehaviour
         {
             inputY = Input.GetAxis("Vertical");
             inputX = Input.GetAxis("Horizontal");
-            //Debug.Log(inputX + "," + inputY);
 
             input = new Vector2(inputX, inputY).normalized;
+            //Debug.Log("Human input = " + input);
             onInput.Invoke(input);
         }
     }
