@@ -201,7 +201,7 @@ MonoBehaviour:
   princessAnimator: {fileID: 0}
   hasVideo: 1
   videoPlayer: {fileID: 528816340}
-  videoClip: {fileID: 32900000, guid: 98512d3e02ebd6a99a6d53b0a6f0a86b, type: 3}
+  videoClip: {fileID: 32900000, guid: 4986137830504804782bff37baafafec, type: 3}
   videoDisplay: {fileID: 565782637}
   levelCompletion: {fileID: 0}
 --- !u!65 &245170465
@@ -1386,7 +1386,7 @@ MonoBehaviour:
   princessAnimator: {fileID: 0}
   hasVideo: 1
   videoPlayer: {fileID: 528816340}
-  videoClip: {fileID: 32900000, guid: 15dae7222a16bc226b20ad14f7221143, type: 3}
+  videoClip: {fileID: 32900000, guid: f82bf91685b70fe4cb8d5f9e68909205, type: 3}
   videoDisplay: {fileID: 565782637}
   levelCompletion: {fileID: 0}
 --- !u!1 &956232514
@@ -2174,7 +2174,7 @@ MonoBehaviour:
   princessAnimator: {fileID: 0}
   hasVideo: 1
   videoPlayer: {fileID: 528816340}
-  videoClip: {fileID: 32900000, guid: f6a3785c1400ce23ba819c797e4aed17, type: 3}
+  videoClip: {fileID: 32900000, guid: 7933a52bb65ff2e47a81ce2b89f80bec, type: 3}
   videoDisplay: {fileID: 565782637}
   levelCompletion: {fileID: 0}
 --- !u!1001 &1321249582
@@ -4706,7 +4706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc2d18c33f3a754bbb4709f227b5bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 1
+  currentLevel: 2
 --- !u!4 &1585817019
 Transform:
   m_ObjectHideFlags: 0

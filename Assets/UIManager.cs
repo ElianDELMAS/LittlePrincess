@@ -2,25 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI textMeshProUGUI;
+    public GameObject continueButton;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (continueButton != null)
+        {
+            continueButton.SetActive(false);
+        }
     }
 
     public void UpdateLapText(string message)
     {
         textMeshProUGUI.text = message;
+    }
+
+    public void ShowContinueButton(UnityEngine.Events.UnityAction onClickAction)
+    {
+        if (continueButton != null)
+        {
+            continueButton.SetActive(true);
+            Button btn = continueButton.GetComponent<Button>();
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(onClickAction);
+        }
     }
 }

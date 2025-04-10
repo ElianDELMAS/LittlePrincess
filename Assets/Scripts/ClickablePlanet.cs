@@ -7,11 +7,13 @@ public class ClickablePlanet : MonoBehaviour
     public string levelName;
     public int requiredLevel = 1;
     public float hoverScale = 1.2f;
-    public Color hoverColor = Color.yellow;
+    public Color hoverColor = Color.green;
 
     private Vector3 originalScale;
     private Color originalColor;
     private Renderer rend;
+    private bool isUnlocked = false;
+    public GameObject lockIcon;
 
     private void Start()
     {
@@ -21,10 +23,25 @@ public class ClickablePlanet : MonoBehaviour
         {
             originalColor = rend.material.color;
         }
+
+        int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
+        isUnlocked = levelReached >= requiredLevel;
+
+        if (!isUnlocked)
+        {
+            if (rend != null) rend.material.color = Color.gray;
+
+            if (lockIcon != null) lockIcon.SetActive(true);
+        }
+        else
+        {
+            if (lockIcon != null) lockIcon.SetActive(false);
+        }
     }
 
     private void OnMouseEnter()
     {
+        if (!isUnlocked) return;
         int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
         if (levelReached >= requiredLevel)
         {
@@ -41,6 +58,7 @@ public class ClickablePlanet : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (!isUnlocked) return;
         int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
         if (levelReached >= requiredLevel)
         {

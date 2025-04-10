@@ -7,4 +7,14 @@ public class GameLevelMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainGameMenu");
     }
+
+    public void ResetProgression()
+    {
+        PlayerPrefs.DeleteKey("LevelReached");
+
+        PlayerPrefs.SetInt("LevelReached", 1);
+        PlayerPrefs.Save();
+
+        Debug.Log("Progression réinitialisée !");
+    }
 }
