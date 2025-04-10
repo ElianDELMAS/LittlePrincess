@@ -71,7 +71,7 @@ public class LapManager : MonoBehaviour
                     }
                     else if (player == mainPlayerRank) // display player rank if not winner
                     {
-                        ui.UpdateLapText("Vous terminez en " + mainPlayerRank.rank + "ème position.");
+                        ui.UpdateLapText("La Petite Princesse termine " + mainPlayerRank.rank + "ème.");
                     }
 
                     if (player == mainPlayerRank) { onPlayerFinished.Invoke(); }
