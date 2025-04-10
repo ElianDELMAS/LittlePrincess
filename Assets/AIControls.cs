@@ -15,10 +15,10 @@ public class AIControls : MonoBehaviour
     private Transform nextWaypoint;
     private Vector3 nextWaypointPosition;
 
-    public float maxDistanceToTarget = 10f;
-    public float maxDistanceToReverse = 20f;
+    public float maxDistanceToTarget = 20f;
+    public float maxDistanceToReverse = 40f;
 
-    public float randomJitterOnPosition = 1f;
+    public float randomJitterOnPosition = 2f;
 
     void Awake()
     {
@@ -45,26 +45,26 @@ public class AIControls : MonoBehaviour
             {
                 int nextIndex = waypoints.IndexOf(nextWaypoint) + 1;
                 SelectWaypoint(nextIndex < waypoints.Count ? waypoints[nextIndex] : waypoints[0]);
-                Debug.Log("Target changed to waypoint " + nextIndex);
-                Debug.Log("Next waypoint position = " + nextWaypointPosition);
+                //Debug.Log("Target changed to waypoint " + nextIndex);
+                //Debug.Log("Next waypoint position = " + nextWaypointPosition);
             }
 
             // Compute Vector2 input based on distances in Right and Forward axis
             Vector3 diff = nextWaypointPosition - transform.position;
             //Debug.Log("diff = " + diff);
-            float componentRight = Vector3.Dot(diff, transform.right.normalized) * (-1f); // input.x
-            float componentForward = Vector3.Dot(diff, transform.forward.normalized) * (-1f); // input.y
+            float componentRight = Vector3.Dot(diff, transform.right.normalized); // input.x
+            float componentForward = Vector3.Dot(diff, transform.forward.normalized); // input.y
             //Debug.Log("componentForward = " + componentForward + " | componentRight = " + componentRight);
-            this.input = new Vector2(componentRight, componentForward).normalized;
+            this.input = new Vector2(componentRight * (-1f), componentForward * (-1f)).normalized;
 
             // If target behind but too far, turn around
-            if (componentForward < 0 && distanceToTarget > maxDistanceToReverse)
+            if (componentForward > 0 && distanceToTarget > maxDistanceToReverse)
             {
-                Debug.Log("Target behind but too far");
-                this.input.x = Mathf.Sign(componentRight) * 1f;
-                this.input.y = 1f;
+                //Debug.Log("Target behind but too far");
+                this.input.x = Mathf.Sign(componentRight) * (-1f);
+                this.input.y = (-1f);
             }
-            Debug.Log("input = " + this.input);
+            //Debug.Log("input = " + this.input);
             onInput?.Invoke(this.input);
         }
     }

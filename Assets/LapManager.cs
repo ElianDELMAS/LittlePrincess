@@ -46,12 +46,12 @@ public class LapManager : MonoBehaviour
     public void playPrincessAnimation()
     {
         if (princessAnimator != null)
-            {
-                Debug.Log("Princess animation started");
-                VideoPlayer videoPlayer = princessAnimator.GetComponent<VideoPlayer>();
-                videoPlayer.Play();
-                videoPlayer.loopPointReached += OnVideoEnd;
-            }
+        {
+            Debug.Log("Princess animation started");
+            VideoPlayer videoPlayer = princessAnimator.GetComponent<VideoPlayer>();
+            videoPlayer.Play();
+            videoPlayer.loopPointReached += OnVideoEnd;
+        }
     }
 
     void OnVideoEnd(VideoPlayer vp)
@@ -98,7 +98,7 @@ public class LapManager : MonoBehaviour
                     }
                     else if (player == mainPlayerRank)
                     {
-                        ui.UpdateLapText("Vous terminez en " + mainPlayerRank.rank + "ème position.");
+                        ui.UpdateLapText("La Petite Princesse termine " + mainPlayerRank.rank + "ème.");
                         ui.ShowContinueButton(playPrincessAnimation);
                     }
 
