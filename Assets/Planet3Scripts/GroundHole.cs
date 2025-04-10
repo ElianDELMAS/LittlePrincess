@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class GroundHole : MonoBehaviour
@@ -8,6 +9,21 @@ public class GroundHole : MonoBehaviour
     private float offsetY = 0.2f; // Hauteur supplémentaire pour que le cylindre dépasse un peu
 
     private static int holeCounter = 0;
+
+    void Awake()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        holeCounter = 0; // Réinitialisation du compteur lorsque la scène est rechargée
+    }
 
     void Start()
     {
