@@ -55,6 +55,15 @@ public class FirstPersonController : MonoBehaviour
             
             Vector3 finalMove = move * speed + verticalVelocity;
             controller.Move(finalMove * Time.deltaTime);
+
+            if (transform.position.y < -70f)
+            {
+                controller.enabled = false;
+                transform.position = new Vector3(28.3f, 5.28f, -291f);
+                transform.rotation = Quaternion.Euler(0f, -25f, 0f);
+                controller.enabled = true; 
+                verticalVelocity = Vector3.zero;
+            }
         }
     }
     

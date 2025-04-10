@@ -1,0 +1,89 @@
+Billy: Hé ! Tu as ma balle ? Je l'attends depuis des heures !
+
++ Tiens, reprends ton antiquité -> billy_insolent
++ Tiens, amuse-toi bien -> billy_thanks
++ Gaëtan m'a dit de te la donner -> billy_gaetan_mention
+
+=== billy_insolent
+Billy: Comment ça, antiquité ? Tu sais quelle valeur a cette balle ?
+
++ Non et je m'en fous -> fin_seul
++ C'est une relique ? -> billy_ball_story
++ Bon ok, la voilà -> billy_thanks
+
+=== billy_ball_story
+Billy: La balle du match légendaire contre les Requins de Bordeaux !
+
++ Ça ne me dit rien -> fin_seul
++ Elle a l'air neuve -> billy_ball_state
+
+=== billy_thanks
+Billy: Enfin ! Tu es une sauveuse. Gaëtan aurait pu la garder encore un siècle !
+
++ Gaëtan dormait encore -> billy_gaetan_sleep
++ Elle est abîmée ? -> billy_ball_state
++ Comment sortir ? -> billy_exit_help
+
+=== billy_ball_state
+Billy: Elle est neuve ! Je l'entretiens tous les jours !
+
++ T'es obsessionnel, mon ami -> billy_obsession
++ Elle est parfaite mais je veux partir maintenant -> billy_exit_help
+
+=== billy_obsession
+Billy: Je ne sais pas si on peut dire cela, mais j'essaye de la préserver.
+
++ Je vois, désolé de t'avoir vexé, tu peux me montrer la sortie maintenant -> billy_exit_help
++ Bien sympa tout ça, mais je dois y aller -> billy_exit_help
++ Merci pour tout, mais il faut que j'y aille -> billy_exit_help
+
+=== billy_gaetan_sleep
+Billy: Typique ! La dernière fois, il s'est endormi en plein lancer...
+
++ Il ronflait -> billy_gaetan_joke
++ Drôle d'équipe -> billy_team_comment
++ Montre la sortie -> billy_exit_help
+
+=== billy_gaetan_joke
+Billy: Comme un moteur de tracteur ! Tu l'as bien observé...
+
++ C'était bruyant -> billy_team_comment
++ Je préfère partir -> billy_exit_help
+
+=== billy_team_comment
+Billy: On a gagné le championnat comme ça !
+
++ Incroyable -> billy_exit_help
++ Pathétique -> fin_seul
+
+=== billy_gaetan_mention
+Billy: Ha ! Il a enfin décidé de se réveiller ?
+
++ Il dormait avec -> billy_gaetan_joke
++ Il m'a parlé de vous -> billy_team_comment
++ La voilà -> billy_thanks
+
+=== billy_exit_help
+Billy: La sortie ? Facile ! Repars par l'entrée principale !
+
++ Pourquoi j'ai aidé alors ? -> billy_sympa
++ Merci, j'y vais directement -> billy_leave
++ Tu sers à rien décidément -> fin_seul
+
+=== billy_sympa
+Billy: C'est juste parce que t'es gentille, ça. Sur ce, à bientôt et bonne visite des autres planètes.
+
++ Merci pour tout, à bientôt -> END
++ À plus les amis, continuez de vous amuser comme ça -> END
+
+=== billy_leave
+Billy: Salut mon amie, à bientôt.
+
++ Merci pour tout, au revoir les gars -> END
++ À plus les amis, continuez de vous amuser comme ça -> END
+
+=== fin_seul
+Billy: J'aime pas ton petit caractère, trouve la sortie tout seul.
+
++ Très utile la batte... -> END
++ Oui bon, salut... -> END

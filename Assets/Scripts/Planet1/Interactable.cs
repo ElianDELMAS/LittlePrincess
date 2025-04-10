@@ -103,7 +103,6 @@ public class Interactable : MonoBehaviour
         {
             StartDialogue();
             isWaitingForDialogueEnd = true;
-            activeBall("Ball", false);
         }
         else
         {
@@ -140,6 +139,13 @@ public class Interactable : MonoBehaviour
                 isAnimationPlaying = true;
             }
         }
+        bool isGlove = objectName.Contains("glove");
+
+        if (isGlove)
+        {
+            activeBall("Ball", false);
+        }
+        
         Debug.Log("Dialogue ended");
         if (justFinishedDialogue2 && objectName.Contains("baseball"))
         {
