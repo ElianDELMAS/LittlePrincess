@@ -9399,15 +9399,15 @@ PrefabInstance:
       objectReference: {fileID: 427272445}
     - target: {fileID: 2532627681857673913, guid: eff08c51387d9a044bc6e226f28a1177, type: 3}
       propertyPath: maxDistanceToTarget
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532627681857673913, guid: eff08c51387d9a044bc6e226f28a1177, type: 3}
-      propertyPath: maxDistanceToReverse
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2532627681857673913, guid: eff08c51387d9a044bc6e226f28a1177, type: 3}
+      propertyPath: maxDistanceToReverse
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2532627681857673913, guid: eff08c51387d9a044bc6e226f28a1177, type: 3}
       propertyPath: randomJitterOnPosition
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3004830027350358063, guid: eff08c51387d9a044bc6e226f28a1177, type: 3}
       propertyPath: m_LocalPosition.x

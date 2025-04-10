@@ -15,10 +15,10 @@ public class AIControls : MonoBehaviour
     private Transform nextWaypoint;
     private Vector3 nextWaypointPosition;
 
-    public float maxDistanceToTarget = 10f;
-    public float maxDistanceToReverse = 20f;
+    public float maxDistanceToTarget = 20f;
+    public float maxDistanceToReverse = 40f;
 
-    public float randomJitterOnPosition = 1f;
+    public float randomJitterOnPosition = 2f;
 
     void Awake()
     {
