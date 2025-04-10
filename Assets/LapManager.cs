@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine.Video;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,10 @@ public class LapManager : MonoBehaviour
     private List<PlayerRank> playerRanks = new List<PlayerRank>();
     private PlayerRank mainPlayerRank;
     public UnityEvent onPlayerFinished = new UnityEvent();
+
+    public Animator princessAnimator;
+
+    public LevelCompletion levelCompletion;
 
     void Start()
     {
@@ -35,6 +40,28 @@ public class LapManager : MonoBehaviour
         {
             if (subscribe) { checkpoint.onCheckpointEnter.AddListener(CheckpointActivated); }
             else { checkpoint.onCheckpointEnter.RemoveListener(CheckpointActivated); }
+        }
+    }
+
+    public void playPrincessAnimation()
+    {
+        if (princessAnimator != null)
+            {
+                Debug.Log("Princess animation started");
+                VideoPlayer videoPlayer = princessAnimator.GetComponent<VideoPlayer>();
+                videoPlayer.Play();
+                videoPlayer.loopPointReached += OnVideoEnd;
+            }
+    }
+
+    void OnVideoEnd(VideoPlayer vp)
+    {
+        if (levelCompletion != null)
+        {
+            levelCompletion.CompleteLevel();
+            int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
+            Debug.Log("Level completed: " + levelReached);
+            SceneManager.LoadScene("GameLevelMenu");
         }
     }
 
@@ -69,9 +96,10 @@ public class LapManager : MonoBehaviour
                         Debug.Log(player.identity.driverName + " a gagné !");
                         ui.UpdateLapText(player.identity.driverName + " a gagné !");
                     }
-                    else if (player == mainPlayerRank) // display player rank if not winner
+                    else if (player == mainPlayerRank)
                     {
                         ui.UpdateLapText("Vous terminez en " + mainPlayerRank.rank + "ème position.");
+                        ui.ShowContinueButton(playPrincessAnimation);
                     }
 
                     if (player == mainPlayerRank) { onPlayerFinished.Invoke(); }

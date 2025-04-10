@@ -243,6 +243,8 @@ public class Interactable : MonoBehaviour
         if (levelCompletion != null && objectName.Contains("baseball"))
         {
             levelCompletion.CompleteLevel();
+            int levelReached = PlayerPrefs.GetInt("LevelReached", 1);
+            Debug.Log("Level completed: " + levelReached);
             SceneManager.LoadScene("GameLevelMenu");
         }
     }
