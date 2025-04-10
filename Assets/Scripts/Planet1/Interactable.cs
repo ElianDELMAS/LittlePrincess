@@ -235,7 +235,10 @@ public class Interactable : MonoBehaviour
     {
         videoPlayer.clip = null;
         firstPersonController.activateFreezePlayer(false);
-        //videoDisplay.gameObject.SetActive(false);
+        if (!objectName.Contains("baseball"))
+        {
+            videoDisplay.gameObject.SetActive(false);
+        }
 
         if (levelCompletion != null && objectName.Contains("baseball"))
         {
