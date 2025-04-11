@@ -18,6 +18,8 @@ public class LapManager : MonoBehaviour
 
     public LevelCompletion levelCompletion;
 
+    public VideoPlayer videoPlayer;
+
     void Start()
     {
         Debug.Log("Active scene: " + SceneManager.GetActiveScene().name);
@@ -46,12 +48,16 @@ public class LapManager : MonoBehaviour
     public void playPrincessAnimation()
     {
         if (princessAnimator != null)
-        {
-            Debug.Log("Princess animation started");
-            VideoPlayer videoPlayer = princessAnimator.GetComponent<VideoPlayer>();
-            videoPlayer.Play();
-            videoPlayer.loopPointReached += OnVideoEnd;
-        }
+            {
+                Debug.Log("Princess animation started");
+                ui.hideContinueButton();
+                if (videoPlayer != null && videoPlayer.clip != null)
+                {
+                    videoPlayer.gameObject.SetActive(true);
+                    videoPlayer.Play();
+                    videoPlayer.loopPointReached += OnVideoEnd;
+                }
+            }
     }
 
     void OnVideoEnd(VideoPlayer vp)
@@ -95,6 +101,7 @@ public class LapManager : MonoBehaviour
                     {
                         Debug.Log(player.identity.driverName + " a gagné !");
                         ui.UpdateLapText(player.identity.driverName + " a gagné !");
+                        ui.ShowContinueButton(playPrincessAnimation);
                     }
                     else if (player == mainPlayerRank)
                     {

@@ -9,11 +9,22 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textMeshProUGUI;
     public GameObject continueButton;
 
+    private UnityEngine.Events.UnityAction currentContinueAction;
+    private bool isContinueButtonVisible = false;
+
     void Start()
     {
         if (continueButton != null)
         {
             continueButton.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (isContinueButtonVisible && Input.GetKeyDown(KeyCode.Return))
+        {
+            currentContinueAction?.Invoke();
         }
     }
 
@@ -27,9 +38,33 @@ public class UIManager : MonoBehaviour
         if (continueButton != null)
         {
             continueButton.SetActive(true);
+            isContinueButtonVisible = true;
+            currentContinueAction = onClickAction;
+
             Button btn = continueButton.GetComponent<Button>();
             btn.onClick.RemoveAllListeners();
             btn.onClick.AddListener(onClickAction);
+        }
+    }
+
+    public void hideContinueButton()
+    {
+        if (continueButton != null)
+        {
+            continueButton.SetActive(false);
+            isContinueButtonVisible = false;
+            currentContinueAction = null;
+        }
+
+        if (textMeshProUGUI != null)
+        {
+            textMeshProUGUI.text = "";
+
+            Transform background = textMeshProUGUI.transform.parent.Find("TextBackground");
+            if (background != null)
+            {
+                background.gameObject.SetActive(false);
+            }
         }
     }
 }
