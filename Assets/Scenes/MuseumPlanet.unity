@@ -204,6 +204,7 @@ MonoBehaviour:
   videoClip: {fileID: 32900000, guid: 4986137830504804782bff37baafafec, type: 3}
   videoDisplay: {fileID: 565782637}
   levelCompletion: {fileID: 0}
+  interactableManager: {fileID: 0}
 --- !u!65 &245170465
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1464,6 +1465,7 @@ MonoBehaviour:
   videoClip: {fileID: 32900000, guid: f82bf91685b70fe4cb8d5f9e68909205, type: 3}
   videoDisplay: {fileID: 565782637}
   levelCompletion: {fileID: 0}
+  interactableManager: {fileID: 0}
 --- !u!1 &956232514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,6 +2254,7 @@ MonoBehaviour:
   videoClip: {fileID: 32900000, guid: 7933a52bb65ff2e47a81ce2b89f80bec, type: 3}
   videoDisplay: {fileID: 565782637}
   levelCompletion: {fileID: 0}
+  interactableManager: {fileID: 0}
 --- !u!1001 &1321249582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2609,6 +2612,7 @@ MonoBehaviour:
   videoClip: {fileID: 0}
   videoDisplay: {fileID: 0}
   levelCompletion: {fileID: 1585817018}
+  interactableManager: {fileID: 536341257}
 --- !u!95 &1483585851
 Animator:
   serializedVersion: 7
@@ -5105,6 +5109,7 @@ MonoBehaviour:
   videoClip: {fileID: 0}
   videoDisplay: {fileID: 0}
   levelCompletion: {fileID: 0}
+  interactableManager: {fileID: 0}
 --- !u!95 &2027667097
 Animator:
   serializedVersion: 7

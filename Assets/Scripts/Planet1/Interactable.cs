@@ -38,6 +38,8 @@ public class Interactable : MonoBehaviour
 
     public LevelCompletion levelCompletion;
 
+    public InteractableManager interactableManager;
+
     void Start()
     {
         objectName = gameObject.name.ToLower();
@@ -154,6 +156,12 @@ public class Interactable : MonoBehaviour
 
             if (princessAnimator != null)
             {
+                if (interactableManager != null)
+                {
+                    Debug.Log("Hiding interaction UI");
+                    interactableManager.trueAnimationPlayed();
+                    interactableManager.HideInteractionUI();
+                }
                 Debug.Log("Princess animation started");
                 VideoPlayer videoPlayer = princessAnimator.GetComponent<VideoPlayer>();
                 videoPlayer.Play();

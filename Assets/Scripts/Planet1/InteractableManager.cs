@@ -12,6 +12,7 @@ public class InteractableManager : MonoBehaviour
     private bool isAnimationPlaying;
     private bool isDialoguePlaying;
     private bool isVideoPlaying;
+    private bool isAnimationPlayed = false;
 
     private GameObject player;
 
@@ -29,7 +30,7 @@ public class InteractableManager : MonoBehaviour
 
         bool canInteract = currentClosest != null && !isAnimationPlaying && !isDialoguePlaying && !isVideoPlaying;
 
-        if (canInteract)
+        if (canInteract && !isAnimationPlayed)
         {
             ShowInteractionUI(currentClosest.interactionMessage);
 
@@ -43,6 +44,11 @@ public class InteractableManager : MonoBehaviour
         {
             HideInteractionUI();
         }
+    }
+
+    public void trueAnimationPlayed()
+    {
+        isAnimationPlayed = true;
     }
 
     void CheckStatesAndClosest()
@@ -99,7 +105,7 @@ public class InteractableManager : MonoBehaviour
         }
     }
 
-    void HideInteractionUI()
+    public void HideInteractionUI()
     {
         if (interactionText != null && interactionText.gameObject.activeSelf)
             interactionText.gameObject.SetActive(false);
