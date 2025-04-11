@@ -69,4 +69,23 @@ public class ClickablePlanet : MonoBehaviour
             Debug.Log("Niveau pas encore débloqué !");
         }
     }
+
+    public void Highlight()
+    {
+        if (!isUnlocked) return;
+        transform.localScale = originalScale * hoverScale;
+        if (rend != null) rend.material.color = hoverColor;
+    }
+
+    public void ResetVisual()
+    {
+        transform.localScale = originalScale;
+        if (rend != null) rend.material.color = originalColor;
+    }
+
+    public void Select()
+    {
+        if (!isUnlocked) return;
+        SceneManager.LoadScene(levelName);
+    }
 }
