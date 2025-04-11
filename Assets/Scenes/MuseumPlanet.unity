@@ -201,7 +201,7 @@ MonoBehaviour:
   princessAnimator: {fileID: 0}
   hasVideo: 1
   videoPlayer: {fileID: 528816340}
-  videoClip: {fileID: 32900000, guid: 4986137830504804782bff37baafafec, type: 3}
+  videoClip: {fileID: 32900000, guid: 6dae71963131d6fdfac2f8d42feb6e65, type: 3}
   videoDisplay: {fileID: 565782637}
   levelCompletion: {fileID: 0}
   interactableManager: {fileID: 0}
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   princessAnimator: {fileID: 0}
   hasVideo: 1
   videoPlayer: {fileID: 528816340}
-  videoClip: {fileID: 32900000, guid: f82bf91685b70fe4cb8d5f9e68909205, type: 3}
+  videoClip: {fileID: 32900000, guid: b146e6510d8b4f63b9c65c1c4edf961f, type: 3}
   videoDisplay: {fileID: 565782637}
   levelCompletion: {fileID: 0}
   interactableManager: {fileID: 0}
@@ -2251,7 +2251,7 @@ MonoBehaviour:
   princessAnimator: {fileID: 0}
   hasVideo: 1
   videoPlayer: {fileID: 528816340}
-  videoClip: {fileID: 32900000, guid: 7933a52bb65ff2e47a81ce2b89f80bec, type: 3}
+  videoClip: {fileID: 32900000, guid: 2afa1708431c33739ad79e308024b906, type: 3}
   videoDisplay: {fileID: 565782637}
   levelCompletion: {fileID: 0}
   interactableManager: {fileID: 0}
@@ -5154,7 +5154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08bf85791b59e27e8534491b01e4d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 300
   sensitivity: 2.2
   gravity: 30
   jumpHeight: 10
@@ -5202,7 +5202,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148032860017}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: d570b2006dd86314a838107ae3372be7, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 41d44d8c6dafbc2f993a5c5047f5cf48, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 382928114}
