@@ -3400,8 +3400,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  princessAnimator: {fileID: 0}
-  levelCompletion: {fileID: 0}
+  princessAnimator: {fileID: 663899893}
+  levelCompletion: {fileID: 1943250645}
+  videoPlayer: {fileID: 663899894}
 --- !u!4 &663899892
 Transform:
   m_ObjectHideFlags: 0
@@ -3453,12 +3454,12 @@ VideoPlayer:
   m_VideoClip: {fileID: 32900000, guid: d570b2006dd86314a838107ae3372be7, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
+  m_TargetCamera: {fileID: 71534029}
   m_TargetTexture: {fileID: 0}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 2
+  m_RenderMode: 1
   m_AspectRatio: 2
   m_DataSource: 0
   m_TimeUpdateMode: 2
@@ -3470,7 +3471,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
@@ -9174,7 +9175,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1951522143}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 663899891}
+        m_TargetAssemblyTypeName: LapManager, Assembly-CSharp
+        m_MethodName: playPrincessAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1951522143
 MonoBehaviour:
   m_ObjectHideFlags: 0

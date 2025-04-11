@@ -32,4 +32,23 @@ public class UIManager : MonoBehaviour
             btn.onClick.AddListener(onClickAction);
         }
     }
+
+    public void hideContinueButton()
+    {
+        if (continueButton != null)
+        {
+            continueButton.SetActive(false);
+        }
+
+        if (textMeshProUGUI != null)
+        {
+            textMeshProUGUI.text = "";
+
+            Transform background = textMeshProUGUI.transform.parent.Find("TextBackground");
+            if (background != null)
+            {
+                background.gameObject.SetActive(false);
+            }
+        }
+    }
 }
