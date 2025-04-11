@@ -133,12 +133,13 @@ public class Interactable : MonoBehaviour
         {
             isWaitingForDialogueEnd = false;
 
-            if (hasAnimation && mAnimator != null && !isCharacterAlreadyVisited)
+            if (hasAnimation && mAnimator != null)
             {
                 mAnimator.SetTrigger(animationTriggerName);
                 isAnimationPlaying = true;
             }
         }
+
         bool isGlove = objectName.Contains("glove");
 
         if (isGlove)
