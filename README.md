@@ -1,8 +1,10 @@
 # "The Little Princess" project
 
+Team: Élian DELMAS + Logan BRUNET + Julie SEYIER + Hugo HEILMANN
+
 ## Download link to our project sources:
 
-Code, and optionally videos, slides (in pdf), and .exe file. that will be valid until 30 April 2025.
+Code, and optionally videos, slides (in pdf), and .exe file that will be valid until 30 April 2025.
 
 ## Version of Unity used:
 
