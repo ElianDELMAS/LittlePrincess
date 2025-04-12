@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public GameObject textbackground;
     public TextMeshProUGUI textMeshProUGUI;
     public GameObject continueButton;
 
@@ -15,6 +16,12 @@ public class UIManager : MonoBehaviour
         {
             continueButton.SetActive(false);
         }
+        textMeshProUGUI.text = "";
+    }
+
+    public void showUI(bool showUI)
+    {
+        this.textbackground.SetActive(showUI);
     }
 
     public void UpdateLapText(string message)

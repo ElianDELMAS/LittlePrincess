@@ -29,9 +29,15 @@ public class LapManager : MonoBehaviour
                 playerRanks.Add(new PlayerRank(carIdentity));
             }
             ListenCheckpoints(true);
-            ui.UpdateLapText("Tour " + playerRanks[0].lapNumber + " / " + totalLaps);
+            ui.showUI(false);
             mainPlayerRank = playerRanks.Find(player => player.identity.gameObject.tag == "Player");
         }
+    }
+
+    public void displayUI()
+    {
+        this.ui.showUI(true);
+        ui.UpdateLapText("Tour " + playerRanks[0].lapNumber + " / " + totalLaps);
     }
 
     private void ListenCheckpoints(bool subscribe)

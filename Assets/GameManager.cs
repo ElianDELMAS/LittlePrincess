@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         {
             followPlayerCamera.enabled = true;
             cameraIntroAnimator.enabled = false;
+            lapTracker.displayUI();
             StartCoroutine("Countdown");
         }
     }
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
     void FreezePlayers(bool freeze)
     {
         //freeze players here
-        playerControls.frost = freeze;
-        foreach (AIControls ai in aiControls) { ai.frost = freeze; }
+        playerControls.setFrost(freeze);
+        foreach (AIControls ai in aiControls) { ai.setFrost(freeze); }
     }
 }
