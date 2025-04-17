@@ -15,6 +15,8 @@ public class Interactable : MonoBehaviour
     public bool hasAnimation = false;
     public string animationTriggerName;
 
+    public GameObject wall;
+
     public Animator princessAnimator;
 
     private bool justFinishedDialogue2 = false;
@@ -39,6 +41,7 @@ public class Interactable : MonoBehaviour
     public LevelCompletion levelCompletion;
 
     public InteractableManager interactableManager;
+
 
     void Start()
     {
@@ -140,6 +143,11 @@ public class Interactable : MonoBehaviour
                 mAnimator.SetTrigger(animationTriggerName);
                 isAnimationPlaying = true;
             }
+        }
+
+        if (objectName.Contains("baseball"))
+        {
+            destroyWall();
         }
 
         bool isGlove = objectName.Contains("glove");
@@ -253,6 +261,7 @@ public class Interactable : MonoBehaviour
         if (!objectName.Contains("baseball"))
         {
             videoDisplay.gameObject.SetActive(false);
+            destroyWall();
         }
 
         if (levelCompletion != null && objectName.Contains("baseball"))
@@ -262,6 +271,11 @@ public class Interactable : MonoBehaviour
             Debug.Log("Level completed: " + levelReached);
             SceneManager.LoadScene("GameLevelMenu");
         }
+    }
+
+    public void destroyWall() 
+    {
+        wall.SetActive(false);
     }
 
     public bool getIsAnimationIsPlaying()

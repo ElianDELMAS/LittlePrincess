@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &98030760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4781540349440274701, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
+  m_PrefabInstance: {fileID: 1283047784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &139488441
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +339,7 @@ MonoBehaviour:
   mAnimator: {fileID: 0}
   hasAnimation: 0
   animationTriggerName: 
+  wall: {fileID: 1736449976}
   princessAnimator: {fileID: 0}
   hasVideo: 1
   videoPlayer: {fileID: 528816340}
@@ -1595,6 +1601,7 @@ MonoBehaviour:
   mAnimator: {fileID: 0}
   hasAnimation: 0
   animationTriggerName: 
+  wall: {fileID: 98030760}
   princessAnimator: {fileID: 0}
   hasVideo: 1
   videoPlayer: {fileID: 528816340}
@@ -1885,6 +1892,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048063737}
   m_CullTransparentMesh: 1
+--- !u!1 &1081216959 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 193356803354822544, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
+  m_PrefabInstance: {fileID: 1283047784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1146285913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2268,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1001 &1272584807
+--- !u!1001 &1283047784
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2264,55 +2276,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 398334488485969712, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
+      propertyPath: m_Name
+      value: Museum
+      objectReference: {fileID: 0}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 115.87875
       objectReference: {fileID: 0}
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalPosition.y
       value: 62.74773
       objectReference: {fileID: 0}
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalPosition.z
       value: 62.59944
       objectReference: {fileID: 0}
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5206221014143329849, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+    - target: {fileID: 1158757716823938079, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8824416569156377200, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
-      propertyPath: m_Name
-      value: Museum
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 120b0d25306a68cb5ae63420bba56cd9, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
 --- !u!1 &1292159699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c24941a79479f392ea55883b7ac9672a, type: 3}
@@ -2385,6 +2397,7 @@ MonoBehaviour:
   mAnimator: {fileID: 0}
   hasAnimation: 0
   animationTriggerName: 
+  wall: {fileID: 1081216959}
   princessAnimator: {fileID: 0}
   hasVideo: 1
   videoPlayer: {fileID: 528816340}
@@ -2486,6 +2499,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2038757002}
   m_SourcePrefab: {fileID: 100100000, guid: df6eb530bb847d95eb43ee8e976e90cf, type: 3}
+--- !u!1 &1323561985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5015977205945081299, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
+  m_PrefabInstance: {fileID: 1283047784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1330078953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2864,6 +2882,7 @@ MonoBehaviour:
   mAnimator: {fileID: 1483585851}
   hasAnimation: 1
   animationTriggerName: PlayBaseball
+  wall: {fileID: 1323561985}
   princessAnimator: {fileID: 1483585851}
   hasVideo: 0
   videoPlayer: {fileID: 919132148032860019}
@@ -5105,6 +5124,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1736449976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2619499876770541924, guid: 9b7634a8094023448bed3b5141a262ca, type: 3}
+  m_PrefabInstance: {fileID: 1283047784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909698199
 GameObject:
   m_ObjectHideFlags: 0
@@ -5407,6 +5431,7 @@ MonoBehaviour:
   mAnimator: {fileID: 1483585851}
   hasAnimation: 1
   animationTriggerName: ReturnToDefault
+  wall: {fileID: 0}
   princessAnimator: {fileID: 0}
   hasVideo: 0
   videoPlayer: {fileID: 0}
@@ -6465,5 +6490,5 @@ SceneRoots:
   - {fileID: 271266246}
   - {fileID: 291154568}
   - {fileID: 1585817019}
-  - {fileID: 1272584807}
   - {fileID: 1629840196}
+  - {fileID: 1283047784}
