@@ -95,6 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5225822411575428217}
+  - component: {fileID: 1683748826236912196}
   m_Layer: 0
   m_Name: PigWithSaddle
   m_TagString: Untagged
@@ -126,6 +127,28 @@ Transform:
   - {fileID: 1691704698387147006}
   m_Father: {fileID: 5889525032754452000}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!95 &1683748826236912196
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688903400008174818}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bcb100695d9a4dd4ca320a0877f5a4ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1202129694747877048
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +936,7 @@ MonoBehaviour:
   frost: 0
   identity: {fileID: 3210459813829125668}
   waypointsHolder: {fileID: 0}
+  pigWalkAnimator: {fileID: 1683748826236912196}
   maxDistanceToTarget: 20
   maxDistanceToReverse: 40
   randomJitterOnPosition: 2

@@ -15,6 +15,8 @@ public class AIControls : MonoBehaviour
     private Transform nextWaypoint;
     private Vector3 nextWaypointPosition;
 
+    public Animator pigWalkAnimator;
+
     public float maxDistanceToTarget = 20f;
     public float maxDistanceToReverse = 40f;
 
@@ -26,6 +28,8 @@ public class AIControls : MonoBehaviour
         this.waypoints = new List<Transform>();
         Transform[] result = this.waypointsHolder.GetComponentsInChildren<Transform>();
         for (int i = 1; i < result.Length; i++) { this.waypoints.Add(result[i]); }
+
+        this.pigWalkAnimator.enabled = false;
     }
 
     void Start()
@@ -57,6 +61,9 @@ public class AIControls : MonoBehaviour
             //Debug.Log("componentForward = " + componentForward + " | componentRight = " + componentRight);
             this.input = new Vector2(componentRight * (-1f), componentForward * (-1f)).normalized;
 
+            if (componentRight == 0 && componentForward == 0) { this.pigWalkAnimator.enabled = false; }
+            else { this.pigWalkAnimator.enabled = true; }
+
             // If target behind but too far, turn around
             if (componentForward > 0 && distanceToTarget > maxDistanceToReverse)
             {
@@ -67,6 +74,7 @@ public class AIControls : MonoBehaviour
             //Debug.Log("input = " + this.input);
             onInput?.Invoke(this.input);
         }
+        else { this.pigWalkAnimator.enabled = false; }
     }
 
     void SelectWaypoint(Transform waypoint)
@@ -75,5 +83,12 @@ public class AIControls : MonoBehaviour
         // Totally optional :
         // This "jitter" add a little randomness around the waypoint to make the AI slightly more human 
         this.nextWaypointPosition = this.nextWaypoint.position + new Vector3(Random.Range(-this.randomJitterOnPosition, this.randomJitterOnPosition), 0, Random.Range(-this.randomJitterOnPosition, this.randomJitterOnPosition));
+    }
+
+    public void setFrost(bool frost)
+    {
+        this.frost = frost;
+        if (frost) { this.pigWalkAnimator.enabled = true; }
+        else { this.pigWalkAnimator.enabled = false; }
     }
 }
