@@ -13,7 +13,7 @@ Link to the slides: https://drive.google.com/file/d/1ONHdsECH48ox8i7RXjmVgcENJlh
 ## Additional Libraries
 
 - Ink Integration for Unity:
-  - We used "Ink Integration for Unity" in the planet to manage all the dialogues with ease, we included it to our project using the Asset Store.
+  - We used "Ink Integration for Unity" on Planet 1 to manage all the dialogues with ease, we included it to our project using the Asset Store.
 - Post processing package:
   - We used the "Post processing" package on Planet 2, as indicated inside the "TD6RacingCarsFinal.html" guidelines (see 'All tutorials we followed' chapter below), to use post processing effects, correct lighting and a improve camera background
 
