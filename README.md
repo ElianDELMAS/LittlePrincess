@@ -10,6 +10,11 @@ Link to the source files: https://github.com/ElianDELMAS/LittlePrincess
 
 Link to the slides: https://drive.google.com/file/d/1ONHdsECH48ox8i7RXjmVgcENJlhDhvHI/view?usp=drive_link
 
+## Additional Libraries
+
+- Ink Integration for Unity:
+  - We used "Ink Integration for Unity" in the planet to manage all the dialogues with ease, we included it to our project using the Asset Store.
+
 ## Version of Unity used:
 
 We used the version 6000.0.36f1 of Unity.
