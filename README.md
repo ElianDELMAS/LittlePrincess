@@ -20,6 +20,7 @@ We used the version 6000.0.36f1 of Unity.
 - animations: Our animations from the TD3
 - scripts: All the scripts in the Assets and Scripts folders
 - Planet 3 ground texture
+- The entire Museum
 
 ## External assets and resources we used 100% without modification:
 - 3D models:
@@ -33,6 +34,9 @@ We used the version 6000.0.36f1 of Unity.
     - Village = https://sketchfab.com/3d-models/minecraft-village-map-ultimate-3d-exploration-21b7887fd3794c2bbe9980e15e917004
   - Planet 3
     - Mountains = https://www.turbosquid.com/3d-models/free-obj-model-minecraft-style-floating-rock/1086461
+- Textures:
+  - Planet 1
+    - All the block/painting textures of the museum were taken on internet
 
 ## All tutorials we followed, and for what part of the project:
 
