@@ -4,24 +4,23 @@ Team: Élian DELMAS + Logan BRUNET + Julie SEYIER + Hugo HEILMANN
 
 ## Download link to our project sources:
 
-Code, and optionally videos, slides (in pdf), and .exe file that will be valid until 30 April 2025.
+Link to the unitypackage: https://drive.google.com/file/d/1J4k5DAk26uGOaAGFYUy4J2p1Ka6g-r0W/view?usp=drive_link
+
+Link to the source files: https://github.com/ElianDELMAS/LittlePrincess
+
+Link to the slides: https://drive.google.com/file/d/1ONHdsECH48ox8i7RXjmVgcENJlhDhvHI/view?usp=drive_link
 
 ## Version of Unity used:
 
-We use the version 6000.0.36f1 of Unity.
-
-## Additional libraries and plugins to run our project (optional):
+We used the version 6000.0.36f1 of Unity.
 
 ## Assets and resources that we created 100%:
 
-- 3D models:
-- animations:
-- sound:
-- images:
-- scripts:
+- 3D models: Our 3D models from the TD3
+- animations: Our animations from the TD3
+- scripts: All the scripts in the Assets and Scripts folders
 
 ## External assets and resources we used 100% without modification:
-(link to the source, with a few words indicating where it was used (ex: “scene X”, “game menu background”))
 - 3D models:
   - Everywhere
     - The Little Princess = https://sketchfab.com/3d-models/minecraft-alex-ae962e4a336a44929b88d7036ee71a8a
@@ -31,9 +30,6 @@ We use the version 6000.0.36f1 of Unity.
     - Pigs = https://sketchfab.com/3d-models/minecraft-pig-with-saddle-1a998dca9aac474b8793b974afd637a7
     - Racetrack = https://sketchfab.com/3d-models/minerace-lsf3-b207d9d282484037b072daecbf96c2a8
     - Village = https://sketchfab.com/3d-models/minecraft-village-map-ultimate-3d-exploration-21b7887fd3794c2bbe9980e15e917004
-
-## External assets and resources that we used with modification:
-(the link to the source, and briefly describe the level of changes you made)
 
 ## All tutorials we followed, and for what part of the project:
 
